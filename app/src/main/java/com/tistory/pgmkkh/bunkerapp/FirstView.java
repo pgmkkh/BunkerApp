@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -47,7 +49,7 @@ public class FirstView extends Activity {
         mProductList = mDBHelper.getListProduct();
         adapter = new ListProductAdapter(this, mProductList);
         lvProduct.setAdapter(adapter);
-        spinner = (Spinner)findViewById(R.id.spinner);
+        spinner = (Spinner)findViewById(R.id.spinner1);
 
         final ArrayList<String> list = new ArrayList<>();
         list.add("지역");
@@ -69,9 +71,33 @@ public class FirstView extends Activity {
         list.add("충청남도");
         list.add("충청북도");
 
+        ///////////////////////////////////////////////////////////////////////////////
+        lvProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            //클릭 이벤트 뷰, 실제 Adapter 뷰, 클릭 위치, 항목 id
+            public void onItemClick(AdapterView<?> parent, View vClicked,
+                                    int position, long id) {
+                String name = ((Product)adapter.getItem(position)).getaName();
+                Toast.makeText(FirstView.this, name + " selected",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        /////////////////////////////////////////////////////////////////////////////////
+
         ArrayAdapter spinnerAdapter;
         spinnerAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, list);
         spinner.setAdapter(spinnerAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(FirstView.this,"선택된 아이템 : "+spinner.getItemAtPosition(position),Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 }
 
     private boolean copyDatabase(Context context) {
