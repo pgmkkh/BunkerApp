@@ -10,18 +10,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="총 개수"
-            android:textSize="15dp"/>
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="parent"
-            android:gravity="left"/>
+            app:layout_constraintLeft_toRightOf="parent" />
 
     </LinearLayout>
 
