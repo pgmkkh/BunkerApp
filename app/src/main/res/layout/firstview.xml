@@ -10,11 +10,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:prompt="@string/bigcity"
+            app:layout_constraintLeft_toRightOf="parent" />
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/spinner2"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:prompt="@string/smallcity"
+            android:layout_gravity="right"
             app:layout_constraintLeft_toRightOf="parent" />
 
     </LinearLayout>

@@ -42,7 +42,7 @@ public class ListProductAdapter extends BaseAdapter {
         TextView Name = (TextView)v.findViewById(R.id.aName);
         TextView Loca = (TextView)v.findViewById(R.id.Loc);
         TextView Phonenum = (TextView)v.findViewById(R.id.Phone);
-        Name.setText(mProductList.get(position).getaName());
+        Name.setText(mProductList.get(position).getbName());
         Loca.setText(mProductList.get(position).getLoc());
         Phonenum.setText(mProductList.get(position).getPhone());
         return v;

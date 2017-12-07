@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAJYQnn6tNPJILiZjrqC4mKDUENj-IwUmk" />
         <activity android:name=".LoginView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +23,8 @@
         <activity android:name=".MainActivity">
     </activity>
         <activity android:name=".FirstView">
+    </activity>
+        <activity android:name=".Info">
         </activity>
     </application>
 

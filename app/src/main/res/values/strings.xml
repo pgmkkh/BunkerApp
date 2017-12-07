@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BunkerApp</string>
+    <string name="bigcity">도, 광역시</string>
+    <string name="smallcity">시, 군, 구</string>
 </resources>

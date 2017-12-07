@@ -6,13 +6,13 @@ package com.tistory.pgmkkh.bunkerapp;
 
 public class Product {
     private int id;
-    private String bName;
-    private String loc;
-    private double lati;
+    private String bName; // 벙커네임
+    private String loc; // 위치
+    private double lati;  // 위 경도
     private double longi;
-    private int capa;
-    private String phone;
-    private String aName;
+    private int capa; // 수용인원
+    private String phone;  // 전화번호
+    private String aName;  // 관리처?
 
     public Product(int id, String bName, String loc, double lati, double longi, int capa, String phone, String aName) {
         this.id = id;
