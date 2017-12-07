@@ -82,7 +82,7 @@ public class FirstView extends Activity {
                 String loc = ((Product)adapter.getItem(position)).getLoc();
                 double lati = ((Product)adapter.getItem(position)).getLati();
                 double longi = ((Product)adapter.getItem(position)).getLongi();
-                int capa = ((Product)adapter.getItem(position)).getCapa();
+                String capa = ((Product)adapter.getItem(position)).getCapa();
                 String phone = ((Product)adapter.getItem(position)).getPhone();
                 String aName = (((Product) adapter.getItem(position)).getaName());
 

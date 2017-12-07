@@ -44,6 +44,20 @@ public class Info extends AppCompatActivity implements OnMapReadyCallback {
                 .findFragmentById(R.id.map);
         //프래그먼트에 지도 싱크
         mapFragment.getMapAsync(this);
+
+        Intent intent = getIntent();
+        String bName = intent.getStringExtra("bName");
+        String loc =intent.getStringExtra("loc");
+        String phone = intent.getStringExtra("phone");
+        String capa = intent.getStringExtra("capa");
+        TextView locText = (TextView)findViewById(R.id.locText);
+        TextView bnText = (TextView)findViewById(R.id.bNameText);
+        TextView pText = (TextView)findViewById(R.id.phoneText);
+       TextView cpText = (TextView)findViewById(R.id.capaText);
+        bnText.setText(bName);
+        locText.setText(loc);
+        pText.setText(phone);
+       cpText.setText(capa);
     }
 
     //기본 지도 위치 및 마커

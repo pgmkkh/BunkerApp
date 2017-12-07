@@ -3,13 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#fffafa">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
         <TextView
             android:id="@+id/bNameText"
+            android:textColor="#b30000"
+            android:textSize="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
@@ -17,26 +20,62 @@
     <fragment
         android:id="@+id/map"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="500dp"
         android:name="com.google.android.gms.maps.SupportMapFragment" />
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="위치 : "
+            android:textSize="30dp"/>
 
         <TextView
             android:id="@+id/locText"
+            android:textColor="#b30000"
+            android:textSize="15dp"
             android:layout_width="wrap_content"
-            android:layout_height="50dp" />
-
+            android:layout_height="wrap_content" />
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="전화번호 : "
+                android:textSize="15dp"/>
         <TextView
             android:id="@+id/phoneText"
+            android:textSize="15dp"
             android:layout_width="wrap_content"
-            android:layout_height="50dp" />
+            android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="수용인원 : "
+                android:textSize="15dp"/>
         <TextView
             android:id="@+id/capaText"
+            android:textSize="15dp"
             android:layout_width="wrap_content"
-            android:layout_height="50dp" />
+            android:layout_height="wrap_content" /></LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

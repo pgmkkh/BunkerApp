@@ -54,7 +54,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = mDatabase.rawQuery("SELECT * FROM PRODUCT", null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            product = new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4), cursor.getInt(5), cursor.getString(6),cursor.getString(7));
+            product = new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4), cursor.getString(5), cursor.getString(6),cursor.getString(7));
             productList.add(product);
             cursor.moveToNext();
         }

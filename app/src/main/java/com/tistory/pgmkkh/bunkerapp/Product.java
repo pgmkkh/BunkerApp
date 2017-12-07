@@ -10,11 +10,11 @@ public class Product {
     private String loc; // 위치
     private double lati;  // 위 경도
     private double longi;
-    private int capa; // 수용인원
+    private String capa; // 수용인원
     private String phone;  // 전화번호
     private String aName;  // 관리처?
 
-    public Product(int id, String bName, String loc, double lati, double longi, int capa, String phone, String aName) {
+    public Product(int id, String bName, String loc, double lati, double longi, String capa, String phone, String aName) {
         this.id = id;
         this.bName = bName;
         this.loc = loc;
@@ -65,11 +65,11 @@ public class Product {
         this.longi = longi;
     }
 
-    public int getCapa() {
+    public String getCapa() {
         return capa;
     }
 
-    public void setCapa(int capa) {
+    public void setCapa(String capa) {
         this.capa = capa;
     }
 
