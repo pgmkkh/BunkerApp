@@ -13,7 +13,6 @@
         android:id="@+id/aName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"
         android:textColor="#4bb6d6"
         android:textSize="20dp" />
 
@@ -21,7 +20,6 @@
         android:id="@+id/Loc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="100 $"
         android:textColor="#b30000"
         android:textSize="18dp" />
 
@@ -29,7 +27,6 @@
         android:id="@+id/Phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
         android:textSize="16dp"
         android:textStyle="italic" />
 

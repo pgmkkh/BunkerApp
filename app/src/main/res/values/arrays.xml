@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="big_list">
+    <string-array name="city_list">
         <item>서울특별시</item>
         <item>경기도</item>
         <item>강원도</item>
@@ -19,12 +19,99 @@
         <item>충청북도</item>
     </string-array>
 
-    <string-array name="서울특별시">
-        <item>서울특별시</item>
-
+    <string-array name="seoul_list">
+        <item>강남구</item>
+        <item>강동구</item>
+        <item>강북구</item>
+        <item>강서구</item>
+        <item>관악구</item>
+        <item>광진구</item>
+        <item>구로구</item>
+        <item>금천구</item>
+        <item>노원구</item>
+        <item>도봉구</item>
+        <item>동대문구</item>
+        <item>동작구</item>
+        <item>마포구</item>
+        <item>서대문구</item>
+        <item>서초구</item>
+        <item>성동구</item>
+        <item>성북구</item>
+        <item>송파구</item>
+        <item>양천구</item>
+        <item>영등포구</item>
+        <item>용산구</item>
+        <item>은평구</item>
+        <item>종로구</item>
+        <item>중구</item>
+        <item>중랑구</item>
     </string-array>
+
+
     <string-array name="kangwon_list">
-
+        <item>강릉시</item>
+        <item>삼척시</item>
+        <item>양구군</item>
+        <item>양양군</item>
+        <item>원주시</item>
+        <item>철원군</item>
+        <item>춘천시</item>
+        <item>태백시</item>
+        <item>고성군</item>
     </string-array>
 
+    <string-array name="gyeonggi_list">
+        <item>가평군</item>
+        <item>고양시</item>
+        <item>광주시</item>
+        <item>남양주시</item>
+        <item>김포시</item>
+        <item>동두천시</item>
+        <item>부천시</item>
+        <item>성남시</item>
+        <item>수원시</item>
+        <item>시흥시</item>
+        <item>안산시</item>
+        <item>연천군</item>
+        <item>양평군</item>
+        <item>용인시</item>
+        <item>오산시</item>
+        <item>의왕시</item>
+        <item>파주시</item>
+        <item>이천시</item>
+        <item>평택시</item>
+        <item>포천시</item>
+        <item>하남시</item>
+        <item>군포시</item>
+        <item>구리시</item>
+    </string-array>
+
+    <string-array name="gNam_list">
+        <item>김해시</item>
+        <item>거제시</item>
+        <item>사천시</item>
+        <item>밀양시</item>
+        <item>산청군</item>
+        <item>의령군</item>
+        <item>양산시</item>
+        <item>창원시</item>
+        <item>함안군</item>
+        <item>통영시</item>
+        <item>합천군</item>
+    </string-array>
+    <string-array name="gbuk_list">
+        <item>김천시</item>
+        <item>봉화군</item>
+        <item>영덕군</item>
+        <item>상주시</item>
+        <item>영천시</item>
+        <item>영주시</item>
+        <item>청도군</item>
+        <item>양양군</item>
+        <item>포항시</item>
+        <item>청송군</item>
+        <item>구미시</item>
+        <item>구미시</item>
+        <item>구미시</item>
+    </string-array>
 </resources>
