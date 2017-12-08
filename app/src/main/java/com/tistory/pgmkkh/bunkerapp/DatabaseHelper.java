@@ -11,6 +11,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.ContentValues.TAG;
+
 /**
  * Created by Kyungho on 2017-12-06.
  */
@@ -51,11 +53,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<Product> getListProduct(CharSequence Big, CharSequence Small) {
         Product product = null;
-        Log.d("asd","Big");
+        Log.d(TAG, "ID = " + Big);
+        Log.d(TAG, "ID = " + Small);
         List<Product> productList = new ArrayList<>();
         openDatabase();
-        Cursor cursor = mDatabase.rawQuery("select * from PRODUCT", null);
-        Log.d("asd","B23123123123ig");
+        Cursor cursor = mDatabase.rawQuery("select * from Product where loc LIKE " + "'%" + Big + "%' and loc LIKE " + "'%" + Small + "%'" , null);
+        Log.d(TAG, "ID = " + cursor);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             product = new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4), cursor.getString(5), cursor.getString(6),cursor.getString(7));
@@ -66,4 +69,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         closeDatabase();
         return productList;
     }
+
 }
