@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,11 +49,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public List<Product> getListProduct() {
+    public List<Product> getListProduct(CharSequence Big, CharSequence Small) {
         Product product = null;
+        Log.d("asd","Big");
         List<Product> productList = new ArrayList<>();
         openDatabase();
-        Cursor cursor = mDatabase.rawQuery("SELECT * FROM PRODUCT", null);
+        Cursor cursor = mDatabase.rawQuery("select * from PRODUCT", null);
+        Log.d("asd","B23123123123ig");
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             product = new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4), cursor.getString(5), cursor.getString(6),cursor.getString(7));
