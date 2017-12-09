@@ -25,16 +25,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class Info extends AppCompatActivity implements OnMapReadyCallback {
     GoogleMap mGoogleMap = null;
 
- //   Intent intent = getIntent();
-
-  //  String bName = intent.getStringExtra("bName");
-   // String loc =intent.getStringExtra("loc");
-  //  double lati = intent.getDoubleExtra("lati",999999);
-   // double longi = intent.getDoubleExtra("longi",999999);
-    //int capa = intent.getIntExtra("capa",999999);
-    //String phone = intent.getStringExtra("phone");
-    //String aName = intent.getStringExtra("aName");
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +32,7 @@ public class Info extends AppCompatActivity implements OnMapReadyCallback {
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
+
         //프래그먼트에 지도 싱크
         mapFragment.getMapAsync(this);
 
