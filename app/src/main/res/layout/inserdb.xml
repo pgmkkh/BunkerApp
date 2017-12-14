@@ -26,7 +26,7 @@
             android:id="@+id/i_nName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="대피소명" />
 
         <EditText
             android:id="@+id/i_nNameE"
@@ -43,12 +43,17 @@
                 android:id="@+id/i_nLoc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="장소" />
 
             <EditText
                 android:id="@+id/i_nLocE"
-                android:layout_width="300dp"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content" />
+            <Button
+                android:id="@+id/find"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="찾기"/>
         </LinearLayout>
 
         <LinearLayout
@@ -59,23 +64,20 @@
                 android:id="@+id/i_nCapa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:text="수용인원" />
 
             <EditText
                 android:id="@+id/i_nCapaE"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
         <Button
-            android:id="@+id/find"
+            android:id="@+id/Save"
+            android:layout_gravity="right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="찾기"/>
-        <Button
-            android:id="@+id/find1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="찾기"/>
+            android:text="저장"/>
     </LinearLayout>
     <fragment
         android:id="@+id/map1"
@@ -83,16 +85,7 @@
         android:layout_height="400dp"
 
         android:name="com.google.android.gms.maps.SupportMapFragment" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/test"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

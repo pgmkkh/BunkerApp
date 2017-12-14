@@ -1,8 +1,10 @@
 package com.tistory.pgmkkh.bunkerapp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -70,4 +72,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return productList;
     }
 
+    public long insertUserByMethod(String name, String loc, String capa , double lati, double longi ) {
+
+        SQLiteDatabase db = getWritableDatabase();
+        //getWritableDatabase()의 insert 함수를 사용하기 위하여 ContentValues 준비
+
+        ContentValues values = new ContentValues();
+
+        values.put("bName", name);
+        values.put("loc", loc);
+        values.put("lali", lati);
+        values.put("longo", longi);
+        values.put("capa", capa);
+
+        //long insert (String table, String nullColumnHack,  ContentValues values)
+        return db.insert("Product", null, values);
+    }
+    public void insertUserBySQL(String name, String loc, String capa , double lati, double longi) {
+        try {
+            String sql = String.format (
+                    "INSERT INTO %s (%s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', '%s', '%s')",
+                    "Product",
+                    "bName",
+                    "loc",
+                    "lali",
+                    "longi",
+                    "capa",
+                    name,
+                    loc,
+                    lati,
+                    longi,
+                    capa);
+            Log.e(TAG,"Error in inserting recodes1");
+            Log.e(TAG,"Error in inserting recodes2");
+
+
+
+            getWritableDatabase().execSQL(sql);
+        } catch (SQLException e) {
+            Log.e(TAG,"Error in inserting recodes");
+        }
+    }
 }

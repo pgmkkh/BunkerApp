@@ -40,81 +40,85 @@ public class InsertDB extends AppCompatActivity implements OnMapReadyCallback{
     double longi;
     GoogleMap mGoogleMap = null;
     String loc;
+    private DatabaseHelper mDbHelper;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inserdb);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map1);
+        mapFragment.getMapAsync(this);
 
+        mDbHelper = new DatabaseHelper(this);
         Button b1 = (Button)findViewById(R.id.find);
         final EditText e1 = (EditText)findViewById(R.id.i_nLocE);
-        Button mMove = (Button) findViewById(R.id.find1);
+        Button b2 = (Button) findViewById(R.id.Save);
 
         b1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 loc = e1.getText().toString();
                 getAddress();
+
+                if (mGoogleMap != null) {
+                    LatLng location = new LatLng(lati, longi);
+                    mGoogleMap.addMarker(
+                            new MarkerOptions().
+                                    position(location).
+                                    title("창신역").
+                                    alpha(0.8f).
+                                    icon(BitmapDescriptorFactory.fromResource(R.drawable.arrow)).
+                                    snippet("6호선")
+                    );
+                    mGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,15));
+                }
             }
         });
 
-        mMove.setOnClickListener(new View.OnClickListener(){
+        b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    setGpsCurrent(lati,longi);
-        }
+                EditText name = (EditText)findViewById(R.id.i_nNameE);
+                EditText loc = (EditText)findViewById(R.id.i_nLocE);
+                EditText capa = (EditText)findViewById(R.id.i_nCapaE);
+
+              mDbHelper.insertUserBySQL(name.getText().toString(),loc.getText().toString(),capa.getText().toString(),lati,longi);
+
+                Toast.makeText(getApplicationContext(),"저장 완료", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(), FirstView.class);
+                startActivity(intent);
+            }
         });
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map1);
-
         }
 
     private void getAddress() {
-        TextView addressTextView = (TextView) findViewById(R.id.test);
         try {
             Geocoder geocoder = new Geocoder(this, Locale.KOREA);
             List<Address> addresses = geocoder.getFromLocationName(loc,1);
             if (addresses.size() >0) {
                 Address bestResult = (Address) addresses.get(0);
 
-                addressTextView.setText(String.format("[ %s , %s ]",
-                        bestResult.getLatitude(),
-                        bestResult.getLongitude()));
-
                 lati =  bestResult.getLatitude();
                 longi =  bestResult.getLongitude();
+                Toast.makeText(getApplicationContext(),"이곳이 맞나요??", Toast.LENGTH_SHORT).show();
+
             }
         } catch (IOException e) {
+            Toast.makeText(getApplicationContext(),"해당지역이 없습니다.", Toast.LENGTH_SHORT).show();
             Log.e(getClass().toString(),"Failed in using Geocoder.", e);
             return;
         }
 
     }
-    private void setGpsCurrent(double strLat, double strLng) {
 
-            // Creating a LatLng object for the current location
-            LatLng latLng = new LatLng(strLat, strLng);
-
-            // Showing the current location in Google Map
-            mGoogleMap.moveCamera(CameraUpdateFactory
-                    .newLatLng(latLng));
-
-
-            // 마커 설정.
-            MarkerOptions optFirst = new MarkerOptions();
-            optFirst.position(latLng);// 위도 • 경도
-            optFirst.title("Current Position");// 제목 미리보기
-            optFirst.snippet("Snippet");
-            optFirst.icon(BitmapDescriptorFactory
-                    .fromResource(R.drawable.ic_launcher));
-            mGoogleMap.addMarker(optFirst).showInfoWindow();
-    }
 
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng hansung = new LatLng(lati, longi);
+        mGoogleMap = googleMap;
+        LatLng hansung = new LatLng(37.5817891, 127.009854);
         googleMap.addMarker(
                 new MarkerOptions().
                         position(hansung).
