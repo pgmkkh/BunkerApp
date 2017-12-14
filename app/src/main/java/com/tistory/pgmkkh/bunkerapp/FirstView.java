@@ -3,14 +3,19 @@ package com.tistory.pgmkkh.bunkerapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -30,7 +35,15 @@ public class FirstView extends Activity {
     private List<Product> mProductList;
     private DatabaseHelper mDBHelper;
     private int ii;
+    private int jj;
+    TextView tv;
     ArrayAdapter<CharSequence> bigCity, smallCity; // big -> seoul..  small -> 강서구..
+    private static final int MENU_ID_MODIFY = Menu.FIRST;
+
+    private static final int MENU_ID_DELETE = Menu.FIRST + 1;
+
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +54,7 @@ public class FirstView extends Activity {
         final Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
         final Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
         Button button = (Button)findViewById(R.id.insert);
-
+        registerForContextMenu(lvProduct);
         bigCity = ArrayAdapter.createFromResource(this, R.array.city_list, android.R.layout.simple_spinner_dropdown_item);
         spinner1.setAdapter(bigCity);
 
@@ -75,6 +88,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {//저희는 두번째 선택된 값도 필요하니 이안에 두번째 spinner 선택 이벤트를 정의합니다.
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             // choice_se = adspin2.getItem(i).toString();//두번째 선택된 값을 choice_se에 넣습니다.
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
@@ -92,6 +106,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             // choice_se = adspin2.getItem(i).toString();
                             Log.d("asd","Big");
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
@@ -109,8 +124,10 @@ public class FirstView extends Activity {
                     smallCity.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner2.setAdapter(smallCity);
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -128,6 +145,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -145,6 +163,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -162,6 +181,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -179,6 +199,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -196,6 +217,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -213,6 +235,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -230,6 +253,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -247,6 +271,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -264,6 +289,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -281,6 +307,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -298,6 +325,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -314,6 +342,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -330,6 +359,7 @@ public class FirstView extends Activity {
                     spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> adapterView, View view, int j, long l) {
+                            jj= j;
                             mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(j));
                             adapter = new ListProductAdapter(getApplicationContext(), mProductList);
                             lvProduct.setAdapter(adapter);
@@ -380,7 +410,50 @@ public class FirstView extends Activity {
             }
         });
         /////////////////////////////////////////////////////////////////////////////////
+
     }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+
+
+        menu.add(0,1,100,"삭제");
+        menu.add(0,2,100,"업데이트");
+    }
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case 1:
+                AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                int position = menuInfo.position;
+                int result = mDBHelper.deleteUserBySQL((((Product) adapter.getItem(position)).getId()));
+                Log.d("test11111111111", ""+(((Product) adapter.getItem(position)).getId()));
+                if(result ==1){
+                    Toast toast = Toast.makeText(FirstView.this, "삭제되었습니다..", Toast.LENGTH_SHORT);
+                    toast.show();
+                    mProductList = mDBHelper.getListProduct(bigCity.getItem(ii),smallCity.getItem(jj));
+                    adapter = new ListProductAdapter(getApplicationContext(), mProductList);
+                    lvProduct.setAdapter(adapter);
+                    /*Intent intent = new Intent(FirstView.this, FirstView.class);
+                    startActivity(intent);*/
+                }else{
+                    Toast toast = Toast.makeText(FirstView.this, "삭제 되지 않았습니다..", Toast.LENGTH_SHORT);
+                    toast.show();
+
+                }
+                //(((Product) adapter.getItem(position)).getbName());
+                return true;
+            case 2:
+
+                return true;
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
+
 
     private boolean copyDatabase(Context context) {
         try {

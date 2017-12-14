@@ -24,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DBLOCATION = "/data/data/com.tistory.pgmkkh.bunkerapp/databases/";
     private Context mContext;
     private SQLiteDatabase mDatabase;
-
+    int bid = 999999;
     public DatabaseHelper(Context context) {
         super(context, DBNAME, null, 1);
         this.mContext = context;
@@ -88,16 +88,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //long insert (String table, String nullColumnHack,  ContentValues values)
         return db.insert("Product", null, values);
     }
+
     public void insertUserBySQL(String name, String loc, String capa , double lati, double longi) {
         try {
             String sql = String.format (
-                    "INSERT INTO %s (%s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', '%s', '%s')",
+                    "INSERT INTO %s (%s, %s, %s, %s, %s, %s) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
                     "Product",
+                    "id",
                     "bName",
                     "loc",
                     "lali",
                     "longi",
                     "capa",
+                    bid++,
                     name,
                     loc,
                     lati,
@@ -111,6 +114,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             getWritableDatabase().execSQL(sql);
         } catch (SQLException e) {
             Log.e(TAG,"Error in inserting recodes");
+        }
+    }
+
+    public int deleteUserBySQL(int id) {
+        try {
+            String sql = String.format (
+                    "DELETE FROM %s WHERE %s = %d",
+                    "Product",
+                    "id",
+                    id);
+
+            getWritableDatabase().execSQL(sql);
+
+            return 1;
+        } catch (SQLException e) {
+            Log.e(TAG,"Error in deleting recodes");
+            return 0;
         }
     }
 }

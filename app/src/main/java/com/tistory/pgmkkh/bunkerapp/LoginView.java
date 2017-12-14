@@ -1,7 +1,8 @@
 package com.tistory.pgmkkh.bunkerapp;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,76 +10,89 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-/**
- * Created by Kyungho on 2017-12-06.
- */
-
 public class LoginView extends AppCompatActivity {
 
-    public static final String PREFERENCES_GROUP = "LoginInfo";
-    public static final String PREFERENCES_ATTR1 = "Username";
-    public static final String PREFERENCES_ATTR2 = "Password";
-    public static final String USER_NAME="hello";
-    public static final String PASSWORD="1234";
-    SharedPreferences setting;
+    int version = 1;
+    LogDBHelper helper;
+    SQLiteDatabase database;
 
+    EditText idEditText;
+    EditText pwEditText;
+    Button btnLogin;
+    Button btnJoin;
+
+    String sql;
+    Cursor cursor;
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        //loginInfo라는 프레퍼런스 등록
-        setting = getSharedPreferences(PREFERENCES_GROUP, MODE_PRIVATE);
-        //입력 상자에 값 세팅
-        final EditText textInput1 = (EditText) findViewById(R.id.nametext);
-        final EditText textInput2 = (EditText) findViewById(R.id.passtext);
+        idEditText = (EditText) findViewById(R.id.idEditText);
+        pwEditText = (EditText) findViewById(R.id.pwEditText);
 
-        textInput1.setText(retrieveName());
-        textInput2.setText(retrievePassword());
+        btnLogin = (Button) findViewById(R.id.btnLogin);
+        btnJoin = (Button) findViewById(R.id.btnJoin);
 
-        Button btn = (Button) findViewById(R.id.loginbutton);
-        btn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+        helper = new LogDBHelper(LoginView.this, LogDBHelper.tableName, null, version);
+        database = helper.getWritableDatabase();
 
-                String name = textInput1.getText().toString();
-                String password = textInput2.getText().toString();
+        btnLogin.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                String id = idEditText.getText().toString();
+                String pw = pwEditText.getText().toString();
 
-                saveName(name);
-                savePassword(password);
-
-                if (name.equals(USER_NAME) && password.equals(PASSWORD)) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+                if(id.length() == 0 || pw.length() == 0) {
+                    //아이디와 비밀번호는 필수 입력사항입니다.
+                    Toast toast = Toast.makeText(LoginView.this, "아이디와 비밀번호는 필수 입력사항입니다.", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
                 }
-                else
-                    Toast.makeText(LoginView.this, "Login Failed (hello / 1234)", Toast.LENGTH_SHORT ).show();
+
+                sql = "SELECT id FROM "+ helper.tableName + " WHERE id = '" + id + "'";
+                cursor = database.rawQuery(sql, null);
+
+                if(cursor.getCount() != 1){
+                    //아이디가 틀렸습니다.
+                    Toast toast = Toast.makeText(LoginView.this, "존재하지 않는 아이디입니다.", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+
+                sql = "SELECT pw FROM "+ helper.tableName + " WHERE id = '" + id + "'";
+                cursor = database.rawQuery(sql, null);
+
+                cursor.moveToNext();
+                if(!pw.equals(cursor.getString(0))){
+                    //비밀번호가 틀렸습니다.
+                    Toast toast = Toast.makeText(LoginView.this, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT);
+                    toast.show();
+                }else{
+                    //로그인성공
+                    Toast toast = Toast.makeText(LoginView.this, "로그인성공", Toast.LENGTH_SHORT);
+                    toast.show();
+                    //인텐트 생성 및 호출
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                cursor.close();
             }
         });
-    }
 
-    private String retrieveName() {
-        String nameText = "";
-        if (setting.contains(PREFERENCES_ATTR1)) {
-            nameText = setting.getString(PREFERENCES_ATTR1, "");
-        }
-        return nameText;
-    }
+        btnJoin.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                //회원가입 버튼 클릭
+                Toast toast = Toast.makeText(LoginView.this, "회원가입 화면으로 이동", Toast.LENGTH_SHORT);
+                toast.show();
+                Intent intent = new Intent(getApplicationContext(),JoinActivity.class);
+                startActivity(intent);
+                //finish();
+            }
+        });
 
-    private String retrievePassword() {
-        String pwText = "";
-        if (setting.contains(PREFERENCES_ATTR2)) {
-            pwText = setting.getString(PREFERENCES_ATTR2, "");
-        }
-        return pwText;
-    }
-
-    private void saveName(String text) {
-        SharedPreferences.Editor editor = setting.edit();
-        editor.putString(PREFERENCES_ATTR1, text);
-        editor.commit();
-    }
-    private void savePassword(String text) {
-        SharedPreferences.Editor editor = setting.edit();
-        editor.putString(PREFERENCES_ATTR2, text);
-        editor.commit();
     }
 }

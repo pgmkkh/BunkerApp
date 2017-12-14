@@ -1,54 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        android:gravity="center">
+        android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/idText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username:"/>
+            android:layout_alignParentTop="true"
+            android:layout_margin="15dp"
+            android:text="ID  : "
+            android:textSize="30sp" />
 
         <EditText
+            android:id="@+id/idEditText"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/idText"
+            android:layout_alignTop="@+id/idText"
+            android:contentDescription="idDes"
+
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="15sp"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/pwText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/nametext"
-            android:layout_weight="0.38" />
+            android:layout_below="@+id/idText"
+            android:text="Pass : "
 
+            android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/pwEditText"
+        android:text=""
+        android:textSize="15sp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+
+        android:contentDescription="pwDes"
+        android:layout_alignTop="@+id/pwText"
+        android:layout_alignBottom="@+id/pwText"
+        tools:ignore="LabelFor" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        >
 
-        <TextView
+        <Button
+            android:id="@+id/btnLogin"
+            android:text="로그인"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password:"/>
+            android:layout_weight="1"
+            tools:ignore="ButtonStyle" />
 
-        <EditText
-            android:layout_width="137dp"
+        <Button
+            android:id="@+id/btnJoin"
+            android:text="회원가입"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:id="@+id/passtext"
-            />
+            android:layout_weight="1"
+            tools:ignore="ButtonStyle" />
 
     </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Login"
-        android:id="@+id/loginbutton"/>
+
 </LinearLayout>
