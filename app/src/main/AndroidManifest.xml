@@ -3,6 +3,7 @@
     package="com.tistory.pgmkkh.bunkerapp">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -26,7 +27,7 @@
 
         <activity android:name=".MainActivity">
         </activity>
-        <activity android:name=".FirstView">
+        <activity android:name=".FirstView" android:parentActivityName=".MainActivity" >
         </activity>
         <activity android:name=".Info">
         </activity>
@@ -34,6 +35,11 @@
         </activity>
         <activity android:name=".SecondView">
         </activity>
+        <activity android:name=".ThirdView">
+        </activity>
+        <activity android:name=".PopupActivity" android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".FourthView"></activity>
+        <activity android:name=".FourthView2"></activity>
     </application>
 
 </manifest>

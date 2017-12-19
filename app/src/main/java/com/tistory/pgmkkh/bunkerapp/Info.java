@@ -39,7 +39,7 @@ public class Info extends AppCompatActivity implements OnMapReadyCallback {
         Intent intent = getIntent();
         String bName = intent.getStringExtra("bName");
         String loc =intent.getStringExtra("loc");
-        String phone = intent.getStringExtra("phone");
+        String aName = intent.getStringExtra("aName");
         String capa = intent.getStringExtra("capa");
         TextView locText = (TextView)findViewById(R.id.locText);
         TextView bnText = (TextView)findViewById(R.id.bNameText);
@@ -47,7 +47,7 @@ public class Info extends AppCompatActivity implements OnMapReadyCallback {
        TextView cpText = (TextView)findViewById(R.id.capaText);
         bnText.setText(bName);
         locText.setText(loc);
-        pText.setText(phone);
+        pText.setText(aName);
        cpText.setText(capa);
     }
 

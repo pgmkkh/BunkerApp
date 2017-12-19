@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="전화번호 : "
+                android:text="관리기관 : "
                 android:textSize="15dp"/>
         <TextView
             android:id="@+id/phoneText"
