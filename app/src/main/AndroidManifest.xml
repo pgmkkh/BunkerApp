@@ -33,13 +33,14 @@
         </activity>
         <activity android:name=".JoinActivity">
         </activity>
-        <activity android:name=".SecondView">
+        <activity android:name=".SecondView" android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name=".ThirdView">
+        <activity android:name=".ThirdView" android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".PopupActivity" android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".FourthView"></activity>
         <activity android:name=".FourthView2"></activity>
+        <activity android:name=".VideoActivity"></activity>
     </application>
 
 </manifest>

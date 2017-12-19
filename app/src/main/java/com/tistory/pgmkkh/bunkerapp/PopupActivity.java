@@ -60,6 +60,15 @@ public class PopupActivity extends Activity {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(nDns)));
             }
         });
+
+        Button btn3 = (Button)findViewById(R.id.close);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(PopupActivity.this,ThirdView.class);
+                startActivity(intent1);
+            }
+        });
     }
     private boolean checkLocationPermissions() {
         int permissionState = ActivityCompat.checkSelfPermission(getApplicationContext(),
