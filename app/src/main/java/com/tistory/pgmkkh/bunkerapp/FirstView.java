@@ -418,10 +418,7 @@ public class FirstView extends Activity {
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
 
-
-
         menu.add(0,1,100,"삭제");
-        menu.add(0,2,100,"업데이트");
     }
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()){

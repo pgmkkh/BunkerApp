@@ -133,4 +133,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return 0;
         }
     }
-}
+
+        public List<Product> locationlist(double leti , double longi ) {
+            Product product = null;
+            double leti1 = leti - 0.01;
+            double leti2 = leti + 0.01;
+            double longi1 = longi - 0.01;
+            double longi2 = longi + 0.01;
+            Log.d("asd","여긴가?");
+            List<Product> productList = new ArrayList<>();
+            openDatabase();
+            Cursor cursor = mDatabase.rawQuery("select * from Product where lali > "+ leti1 +" and lali < "+ leti2 + " and longi > "+ longi1 + " and longi < " + longi2 , null);
+            Log.d("asd","여긴가11?");
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                product = new Product(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getDouble(3), cursor.getDouble(4), cursor.getString(5), cursor.getString(6),cursor.getString(7));
+                productList.add(product);
+                cursor.moveToNext();
+            }
+            cursor.close();
+            closeDatabase();
+            return productList;
+        }
+    }
